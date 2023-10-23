@@ -16,7 +16,7 @@ public class CreateAccount {
 	@Setter
 	@AllArgsConstructor
 	@NoArgsConstructor
-	public static class Request {
+	public static class CaRequest {
 		@NotNull
 		@Min(1)
 		private Long id;
@@ -31,13 +31,13 @@ public class CreateAccount {
 	@NoArgsConstructor
 	@AllArgsConstructor
 	@Builder
-	public static class Response {
+	public static class CaResponse {
 		private Long userId;
 		private String accountNumber;
 		private LocalDateTime registeredAt;
 		
-		public static Response fromDto(AccountDto accountDto) {
-			return Response.builder()
+		public static CaResponse fromDto(AccountDto accountDto) {
+			return CaResponse.builder()
 					.userId(accountDto.getUserId())
 					.accountNumber(accountDto.getAccountNumber())
 					.registeredAt(accountDto.getRegisteredAt())

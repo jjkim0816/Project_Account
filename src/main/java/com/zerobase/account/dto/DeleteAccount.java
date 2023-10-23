@@ -18,7 +18,7 @@ public class DeleteAccount {
 	@Setter
 	@NoArgsConstructor
 	@AllArgsConstructor
-	public static class Request {
+	public static class DaRequest {
 		@NotNull
 		@Min(1)
 		private Long id;
@@ -34,13 +34,13 @@ public class DeleteAccount {
 	@NoArgsConstructor
 	@AllArgsConstructor
 	@Builder
-	public static class Response {
+	public static class DaResponse {
 		private Long userId;
 		private String accountNumber;
 		private LocalDateTime unRegisteredAt;
 		
-		public static Response fromDto(AccountDto accountDto) {
-			return Response.builder()
+		public static DaResponse fromDto(AccountDto accountDto) {
+			return DaResponse.builder()
 					.userId(accountDto.getUserId())
 					.accountNumber(accountDto.getAccountNumber())
 					.unRegisteredAt(accountDto.getUnRegisteredAt())

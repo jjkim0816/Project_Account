@@ -38,10 +38,10 @@ public class AccountController {
 	}
 	
 	@PostMapping("/account")
-	public CreateAccount.Response createAccount(
-		@RequestBody CreateAccount.Request request
+	public CreateAccount.CaResponse createAccount(
+		@RequestBody CreateAccount.CaRequest request
 	) {
-		return CreateAccount.Response.fromDto(
+		return CreateAccount.CaResponse.fromDto(
 				accountService.createAccount(
 						request.getId(),
 						request.getInitialBalance())
@@ -49,10 +49,10 @@ public class AccountController {
 	}
 	
 	@DeleteMapping("/account")
-	public DeleteAccount.Response deleteAccont (
-		@RequestBody DeleteAccount.Request request
+	public DeleteAccount.DaResponse deleteAccont (
+		@RequestBody DeleteAccount.DaRequest request
 	) {
-		return DeleteAccount.Response.fromDto(
+		return DeleteAccount.DaResponse.fromDto(
 			accountService.deleteAccount(
 				request.getId(),
 				request.getAccountNumber()

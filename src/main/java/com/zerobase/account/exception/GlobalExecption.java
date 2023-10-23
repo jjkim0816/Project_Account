@@ -2,6 +2,7 @@ package com.zerobase.account.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -19,6 +20,15 @@ public class GlobalExecption {
 		return ResponseEntity
 				.status(status)
 				.body(new ErrorResponse(e.getErrorCode(), e.getErrorMessage()));
+	}
+	
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ErrorResponse handlerMethodArgumentNotValidException(
+			MethodArgumentNotValidException e) {
+	
+		return new ErrorResponse(
+			ErrorCode.INVALID_REQUEST,
+			ErrorCode.INVALID_REQUEST.getDescription());
 	}
 
 	private HttpStatus getHttpStatus(AccountException e) {
