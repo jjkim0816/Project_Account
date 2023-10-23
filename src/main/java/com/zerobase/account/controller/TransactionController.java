@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zerobase.account.aop.AccountLock;
 import com.zerobase.account.dto.CancelBalance;
 import com.zerobase.account.dto.QueryTransaction;
 import com.zerobase.account.dto.UseBalance;
@@ -36,6 +37,7 @@ public class TransactionController {
 	}
 	
 	@PostMapping("/use")
+	@AccountLock
 	public UseBalance.UbResponse useBalance(
 		@Valid @RequestBody UseBalance.UbRequest request
 	) throws InterruptedException {
@@ -56,6 +58,7 @@ public class TransactionController {
 	}
 	
 	@DeleteMapping("/cancel")
+	@AccountLock
 	public CancelBalance.CbResponse cancelBalance(
 		@Valid @RequestBody CancelBalance.CbRequest request
 	) throws InterruptedException {
