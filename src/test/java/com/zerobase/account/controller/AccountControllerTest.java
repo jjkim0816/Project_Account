@@ -14,7 +14,6 @@ import com.zerobase.account.dto.CreateAccount;
 import com.zerobase.account.dto.DeleteAccount;
 import com.zerobase.account.service.AccountService;
 
-
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
@@ -55,7 +54,7 @@ class AccountControllerTest {
 		mockMvc.perform(post(uriPrefix + "/account")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(
-					new CreateAccount.Request(3333L, 1111L)
+					new CreateAccount.CaRequest(3333L, 1111L)
 				)))
 		.andDo(print())
 		.andExpect(status().isOk())
@@ -111,7 +110,7 @@ class AccountControllerTest {
 		mockMvc.perform(delete(uriPrefix + "/account")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(
-					new DeleteAccount.Request(1L, "1000000000")
+					new DeleteAccount.DaRequest(1L, "1000000000")
 				)))
 		.andDo(print())
 		.andExpect(status().isOk())

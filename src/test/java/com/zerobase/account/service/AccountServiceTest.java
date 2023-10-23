@@ -48,24 +48,24 @@ class AccountServiceTest {
 	@DisplayName("계좌 생성 - 계좌 생성 성공")
 	void createAccount_success() {
 		// given
-		AccountUser user = AccountUser.builder()
+		AccountUser accountUser = AccountUser.builder()
 			.name("Kim")
 			.build();
-		user.setId(1L);
+		accountUser.setId(1L);
 		
 		Account account = Account.builder()
 						.accountNumber("1000000000")
 						.build();
 
 		given(accountUserRepository.findById(anyLong()))
-			.willReturn(Optional.of(user));
+			.willReturn(Optional.of(accountUser));
 		
 		given(accountRepository.findFirstByOrderByIdDesc())
 			.willReturn(Optional.of(account));
 		
 		given(accountRepository.save(any()))
 			.willReturn(Account.builder()
-					.accountUser(user)
+					.accountUser(accountUser)
 					.accountNumber(
 						Integer.parseInt(account.getAccountNumber()) + 1 + "")
 					.build());
