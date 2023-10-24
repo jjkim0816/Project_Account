@@ -5,15 +5,12 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-import com.zerobase.account.aop.AccountLockIdInterface;
 import com.zerobase.account.dto.UseBalance.UbRequest;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Aspect
 @Component
-@Slf4j
 @RequiredArgsConstructor
 public class LockAopAspect {
 	private final LockService lockService;
